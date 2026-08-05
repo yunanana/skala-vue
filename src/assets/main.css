@@ -1,0 +1,108 @@
+@import './base.css';
+
+/* 상단 고정 바(내비 + 티커)와 하단 알약 내비 높이만큼 본문을 비워 둔다 */
+#app {
+  padding-top: var(--chrome-top);
+  padding-bottom: calc(var(--foot-height) + 48px);
+}
+
+/* ==========================================================================
+   마이크로 타이포 - 화면의 모든 라벨은 고정폭 대문자
+   ========================================================================== */
+.eyebrow,
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--label-spacing);
+  color: var(--text-muted);
+}
+
+/* (01) 처럼 괄호를 두른 인덱스 번호 */
+.index-num {
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  letter-spacing: var(--label-spacing);
+  color: var(--accent);
+}
+
+/* 본문 컨테이너 */
+.practice-container {
+  max-width: var(--container-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  color: var(--text);
+}
+
+/* 헤어라인 구분선 */
+.rule {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+/* ==========================================================================
+   공통 폼 요소 - 각진 모서리, 그림자 없음, 라벨은 고정폭 대문자
+   ========================================================================== */
+button {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  padding: 7px 14px;
+  margin: 5px 5px 5px 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+button:not(:disabled):hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+button:not(:disabled):active {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 8px 11px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}

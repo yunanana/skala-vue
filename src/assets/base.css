@@ -1,0 +1,252 @@
+/* ==========================================================================
+   디자인 토큰
+
+   레퍼런스: 코드로 만든 스튜디오 사이트들의 편집 디자인 문법
+   - 잉크색 캔버스 위 오프화이트 텍스트, 강조는 일렉트릭 블루 하나만
+   - 헤어라인 격자와 각진 모서리, 그림자 없음
+   - 정보 라벨은 전부 고정폭 대문자 마이크로 타이포
+
+   기본은 종이(라이트) 모드이고, html에 .theme-dark가 붙으면 잉크 모드가 된다.
+   ========================================================================== */
+:root {
+  /* 종이 모드 (라이트) */
+  --bg: #ffffff;
+  --bg-paper: #f2f4f9;
+  --bg-subtle: #f8f9fc;
+  --bg-hover: #eef1f8;
+
+  --text: #111111;
+  --text-muted: #71757e;
+  --text-meta: #2c2f36;
+
+  /* 포인트색 — 연한 톤을 면에, 진한 톤을 글자·테두리에 쓴다 */
+  --accent: #97b0fb;
+  --accent-tint: #bbcbfb;
+  /* 연한 파랑 위에 흰 글자는 읽기 어려워서, 강조 글자는 이 어두운 톤을 쓴다 */
+  --accent-ink: #12224d;
+  --accent-text: #4f6fe0;
+  --accent-soft: rgba(151, 176, 251, 0.22);
+
+  /* 배경 체커보드 한 칸의 색 (회색) */
+  --checker: rgba(17, 17, 17, 0.055);
+  --checker-size: 30px;
+
+  --border: rgba(17, 17, 17, 0.14);
+  --border-strong: rgba(17, 17, 17, 0.42);
+  --hover-border: #111111;
+
+  --nav-bg: rgba(255, 255, 255, 0.84);
+
+  /* 화면 상·하단 고정 바와 본문 폭 */
+  --nav-height: 40px;
+  --ticker-height: 30px;
+  --foot-height: 32px;
+  --chrome-top: calc(var(--nav-height) + var(--ticker-height));
+  --container-max: 1120px;
+  --gutter: 28px;
+
+  --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Helvetica Neue', Helvetica, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+
+  /* 마이크로 라벨 (대문자 고정폭) */
+  --label-size: 0.66rem;
+  --label-spacing: 0.16em;
+}
+
+.theme-dark {
+  --bg: #111214;
+  --bg-paper: #191b1f;
+  --bg-subtle: #151619;
+  --bg-hover: #21242a;
+
+  --text: #ffffff;
+  --text-muted: #8b8f98;
+  --text-meta: #d3d6dc;
+
+  --accent: #97b0fb;
+  --accent-tint: #6d84c6;
+  --accent-ink: #0e1220;
+  --accent-text: #bbcbfb;
+  --accent-soft: rgba(151, 176, 251, 0.2);
+
+  --checker: rgba(255, 255, 255, 0.045);
+
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.4);
+  --hover-border: #ffffff;
+
+  --nav-bg: rgba(17, 18, 20, 0.84);
+}
+
+/* 기존 컴포넌트가 쓰던 변수명 호환 */
+:root,
+.theme-dark {
+  --color-background: var(--bg);
+  --color-background-soft: var(--bg-subtle);
+  --color-background-mute: var(--bg-paper);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-strong);
+  --color-heading: var(--text);
+  --color-text: var(--text);
+}
+
+/* ==========================================================================
+   리셋 & 기본 타이포그래피
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  /* 배경 도트(캔버스)를 반투명하게 깔기 때문에, 바탕색은 html이 책임진다 */
+  background: var(--bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  word-break: keep-all;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* 큰 제목은 자간을 바짝 조이고 줄간을 눌러 편집 디자인처럼 보이게 한다 */
+h1 {
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: -0.03em;
+}
+h3 {
+  font-size: 1rem;
+}
+h4 {
+  font-size: 0.92rem;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* 배경 체커보드 — 두 겹의 대각선 격자를 반 칸 어긋나게 겹친다 */
+.checker-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(45deg, var(--checker) 25%, transparent 25% 75%, var(--checker) 75%),
+    linear-gradient(45deg, var(--checker) 25%, transparent 25% 75%, var(--checker) 75%);
+  background-size: var(--checker-size) var(--checker-size);
+  background-position:
+    0 0,
+    calc(var(--checker-size) / 2) calc(var(--checker-size) / 2);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* ==========================================================================
+   v-reveal — 스크롤해서 화면에 들어올 때의 등장
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Element Plus 테마 덮어쓰기
+   기본 스타일(파란 포인트색, 둥근 모서리, 그림자)을 팀 디자인 토큰에 맞춰
+   무채색 · 각진 모서리 · 그림자 없음으로 바꾼다.
+   변수만 갈아끼우므로 컴포넌트 마크업은 손대지 않는다.
+   ========================================================================== */
+:root,
+.theme-dark {
+  /* 포인트색은 팀 강조색(일렉트릭 블루) 하나로 통일한다 */
+  --el-color-primary: var(--accent);
+  --el-color-primary-light-3: var(--accent);
+  --el-color-primary-light-5: var(--border-strong);
+  --el-color-primary-light-7: var(--border-strong);
+  --el-color-primary-light-8: var(--border);
+  --el-color-primary-light-9: var(--accent-soft);
+  --el-color-primary-dark-2: var(--accent);
+
+  /* 상태색도 무채색 계열로.
+     Element Plus는 light-3/5/7/8/9 파생 변수로 테두리·배경을 만들기 때문에
+     본색만 바꾸면 분홍색 테두리 같은 잔재가 남는다. 파생까지 모두 덮는다. */
+  --el-color-success: var(--text);
+  --el-color-success-light-3: var(--border-strong);
+  --el-color-success-light-5: var(--border);
+  --el-color-success-light-7: var(--border);
+  --el-color-success-light-8: var(--border);
+  --el-color-success-light-9: var(--bg-hover);
+
+  --el-color-info: var(--text-muted);
+  --el-color-info-light-3: var(--border-strong);
+  --el-color-info-light-5: var(--border);
+  --el-color-info-light-7: var(--border);
+  --el-color-info-light-8: var(--border);
+  --el-color-info-light-9: var(--bg-hover);
+
+  --el-color-warning: var(--text-meta);
+  --el-color-warning-light-3: var(--border-strong);
+  --el-color-warning-light-5: var(--border);
+  --el-color-warning-light-7: var(--border);
+  --el-color-warning-light-8: var(--border);
+  --el-color-warning-light-9: var(--bg-hover);
+
+  --el-color-danger: var(--text);
+  --el-color-danger-light-3: var(--border-strong);
+  --el-color-danger-light-5: var(--border);
+  --el-color-danger-light-7: var(--border);
+  --el-color-danger-light-8: var(--border);
+  --el-color-danger-light-9: var(--bg-hover);
+
+  --el-color-error: var(--text);
+  --el-color-error-light-3: var(--border-strong);
+  --el-color-error-light-5: var(--border);
+  --el-color-error-light-7: var(--border);
+  --el-color-error-light-8: var(--border);
+  --el-color-error-light-9: var(--bg-hover);
+
+  /* 배경 · 글자 */
+  --el-bg-color: var(--bg);
+  --el-bg-color-page: var(--bg);
+  --el-bg-color-overlay: var(--bg);
+  --el-fill-color: var(--bg-hover);
+  --el-fill-color-light: var(--bg-subtle);
+  --el-fill-color-lighter: var(--bg-subtle);
+  --el-fill-color-blank: var(--bg);
+
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: var(--text-meta);
+  --el-text-color-secondary: var(--text-muted);
+  --el-text-color-placeholder: var(--text-muted);
+  --el-text-color-disabled: var(--text-muted);
+
+  /* 테두리 */
+  --el-border-color: var(--border);
+  --el-border-color-light: var(--border);
+  --el-border-color-lighter: var(--border);
+  --el-border-color-extra-light: var(--border);
+  --el-border-color-hover: var(--hover-border);
+  --el-border-color-darker: var(--border-strong);
+
+  /* 각진 모서리 (팀 디자인 원칙) */
+  --el-border-radius-base: 0;
+  --el-border-radius-small: 0;
+  --el-border-radius-round: 0;
+  --el-border-radius-circle: 0;
+
+  /* 그림자 제거 */
+  --el-box-shadow: none;
+  --el-box-shadow-light: none;
+  --el-box-shadow-lighter: none;
+  --el-box-shadow-dark: none;
+
+  --el-font-family: var(--font-body);
+  --el-font-size-base: 0.85rem;
+}
+
+/* 표 머리글은 고정폭으로 눌러 화면 톤에 맞춘다 */
+.el-table th .cell {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.el-table {
+  --el-table-border-color: var(--border);
+  --el-table-header-bg-color: var(--bg-subtle);
+  --el-table-row-hover-bg-color: var(--bg-hover);
+}
+
+/* 버튼 글자도 화면의 다른 라벨과 같은 고정폭 대문자로 맞춘다 */
+.el-button {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  --el-button-bg-color: transparent;
+}
+
+/* 표 안에 들어가는 작은 버튼은 대문자로 늘어난 만큼 자간·여백을 줄인다 */
+.el-button--small {
+  padding: 5px 9px;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--accent);
+  --el-button-border-color: var(--accent);
+  --el-button-text-color: var(--accent-ink);
+  --el-button-hover-bg-color: var(--accent);
+  --el-button-hover-border-color: var(--accent);
+  --el-button-hover-text-color: var(--accent-ink);
+}
+
+.el-button--primary:not(.is-disabled):hover {
+  opacity: 0.85;
+}
+
+/* 태그: 색 대신 테두리와 반전으로 구분 */
+.el-tag {
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  /* 기본(plain) 태그는 테두리만 두른 형태 */
+  --el-tag-text-color: var(--text-meta);
+  --el-tag-bg-color: transparent;
+  --el-tag-border-color: var(--border);
+}
+
+/* dark effect 태그(품절 등)는 강조색으로 반전시킨다 */
+.el-tag.el-tag--dark {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* 다이얼로그: 그림자 대신 테두리 */
+.el-dialog {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.el-dialog__title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* 입력 요소 내부 그림자(기본 테마의 inset box-shadow) 제거 후 테두리로 대체 */
+.el-input__wrapper,
+.el-textarea__inner,
+.el-select__wrapper {
+  box-shadow: none !important;
+  border: 1px solid var(--border);
+  border-radius: 0;
+}
+
+.el-input__wrapper.is-focus,
+.el-textarea__inner:focus,
+.el-select__wrapper.is-focused {
+  border-color: var(--accent);
+}
+
+/* 카드도 각지게. 배경 도트가 살짝 비치도록 반투명하게 깐다 */
+.el-card {
+  border-radius: 0;
+  border-color: var(--border);
+  box-shadow: none !important;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* 카드 머리말도 고정폭 라벨 톤으로 */
+.el-card__header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}

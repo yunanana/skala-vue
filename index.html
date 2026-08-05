@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BETWEEN WEATHER</title>
+
+    <!-- 본문용 한글 폰트 -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      rel="stylesheet"
+    />
+    <!-- 코드/라벨용 고정폭 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 새로고침 시 화면 깜빡임 방지: 저장된 테마를 렌더링 전에 미리 적용 -->
+    <script>
+      ;(function () {
+        try {
+          // 저장된 값이 없으면 종이(라이트) 모드로 시작한다
+          var saved = localStorage.getItem('theme')
+          var dark = saved === 'dark'
+          if (dark) document.documentElement.classList.add('theme-dark')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
